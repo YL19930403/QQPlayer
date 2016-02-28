@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface lrcScrollView : UIScrollView
+//歌词的名字
+@property(nonatomic,copy) NSString * lrcName ;
+
 - (instancetype)initWithCoder:(NSCoder *)aDecoder ;
 @end

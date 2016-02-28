@@ -8,14 +8,27 @@
 
 #import "lrcScrollView.h"
 #import <Masonry.h>
+#import "lrcTableViewCell.h"
+#import "lrcLine.h"
+#import "lrcTool.h"
 
 @interface lrcScrollView ()<UITableViewDataSource,UITableViewDelegate>
 
 @property(nonatomic,weak) UITableView * tableV ;
 
+@property(nonatomic,strong)NSMutableArray * lrclines ;
+
 @end
 
 @implementation lrcScrollView
+
+- (NSMutableArray *)lrclines
+{
+    if (!_lrclines) {
+        _lrclines = [NSMutableArray array];
+    }
+    return _lrclines ;
+}
 
 //从StoryBoard加载的
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -33,6 +46,7 @@
     self.tableV = tableV ;
     self.tableV.dataSource = self ;
     self.tableV.rowHeight = 30 ;
+    tableV.showsVerticalScrollIndicator = NO;
     //设置tableView的上下内边距
     self.tableV.contentInset = UIEdgeInsetsMake(self.bounds.size.height*0.5, 0, self.bounds.size.height*0.5, 0);
     
@@ -66,27 +80,30 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20 ;
+    return self.lrclines.count ;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString * ID = @"UITableViewCell";
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-    }
-    cell.textLabel.text = @"的复活节是南方";
-    [cell.textLabel setTextColor:[UIColor whiteColor]];
-    [cell.textLabel setFont:[UIFont systemFontOfSize:13]];
-    cell.backgroundColor = [UIColor clearColor];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
-    return cell ;
-    
+       //创建cell
+    lrcTableViewCell * cell =   [lrcTableViewCell irlCellWithTableView:self.tableV];
+    //给cell设置数据
+    lrcLine * lrcline = self.lrclines[indexPath.row];
+    cell.textLabel.text = lrcline.text;
+    return cell;
 }
 
-
+#pragma mark  -  重写Setter方法
+- (void)setLrcName:(NSString *)lrcName
+{
+    _lrcName = lrcName ;
+    //解析歌词
+    self.lrclines = [lrcTool lrcToolWithLrcName:lrcName];
+    //刷新列表
+    [self.tableV reloadData];
+    
+    
+}
 
 
 @end

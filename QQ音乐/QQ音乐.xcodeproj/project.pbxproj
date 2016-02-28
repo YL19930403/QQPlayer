@@ -59,6 +59,9 @@
 		292EF3F51C81F99E0030140A /* YLPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 292EF3F41C81F99E0030140A /* YLPlayingViewController.m */; };
 		297C32721C82CFDE00F54EE8 /* CALayer+LayerAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 297C32711C82CFDE00F54EE8 /* CALayer+LayerAnimation.m */; };
 		297C32751C82D62300F54EE8 /* lrcScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 297C32741C82D62300F54EE8 /* lrcScrollView.m */; };
+		297C32781C82E88A00F54EE8 /* lrcTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 297C32771C82E88A00F54EE8 /* lrcTableViewCell.m */; };
+		297C327B1C82EA6B00F54EE8 /* lrcLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 297C327A1C82EA6B00F54EE8 /* lrcLine.m */; };
+		297C327E1C82F98500F54EE8 /* lrcTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 297C327D1C82F98500F54EE8 /* lrcTool.m */; };
 		2988C94A1C82ABC30042A4D6 /* NSString+YLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2988C9491C82ABC30042A4D6 /* NSString+YLExtension.m */; };
 		299AF9491C82811B0059715C /* UIView+YLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 299AF9481C82811B0059715C /* UIView+YLExtension.m */; };
 		299AF94D1C828F980059715C /* YLPlayingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 299AF94C1C828F980059715C /* YLPlayingTool.m */; };
@@ -147,6 +150,12 @@
 		297C32711C82CFDE00F54EE8 /* CALayer+LayerAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+LayerAnimation.m"; sourceTree = "<group>"; };
 		297C32731C82D62300F54EE8 /* lrcScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lrcScrollView.h; sourceTree = "<group>"; };
 		297C32741C82D62300F54EE8 /* lrcScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lrcScrollView.m; sourceTree = "<group>"; };
+		297C32761C82E88900F54EE8 /* lrcTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lrcTableViewCell.h; sourceTree = "<group>"; };
+		297C32771C82E88A00F54EE8 /* lrcTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lrcTableViewCell.m; sourceTree = "<group>"; };
+		297C32791C82EA6B00F54EE8 /* lrcLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lrcLine.h; sourceTree = "<group>"; };
+		297C327A1C82EA6B00F54EE8 /* lrcLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lrcLine.m; sourceTree = "<group>"; };
+		297C327C1C82F98500F54EE8 /* lrcTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lrcTool.h; sourceTree = "<group>"; };
+		297C327D1C82F98500F54EE8 /* lrcTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lrcTool.m; sourceTree = "<group>"; };
 		2988C9481C82ABC30042A4D6 /* NSString+YLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+YLExtension.h"; sourceTree = "<group>"; };
 		2988C9491C82ABC30042A4D6 /* NSString+YLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+YLExtension.m"; sourceTree = "<group>"; };
 		299AF9471C82811B0059715C /* UIView+YLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+YLExtension.h"; path = "Other/UIView+YLExtension.h"; sourceTree = "<group>"; };
@@ -287,6 +296,8 @@
 			children = (
 				299AF94E1C828FAD0059715C /* YLMusic.h */,
 				299AF94F1C828FAD0059715C /* YLMusic.m */,
+				297C32791C82EA6B00F54EE8 /* lrcLine.h */,
+				297C327A1C82EA6B00F54EE8 /* lrcLine.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -309,6 +320,8 @@
 				299AF9521C8295B60059715C /* YLAudioTool.m */,
 				299AF94B1C828F980059715C /* YLPlayingTool.h */,
 				299AF94C1C828F980059715C /* YLPlayingTool.m */,
+				297C327C1C82F98500F54EE8 /* lrcTool.h */,
+				297C327D1C82F98500F54EE8 /* lrcTool.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -318,6 +331,8 @@
 			children = (
 				297C32731C82D62300F54EE8 /* lrcScrollView.h */,
 				297C32741C82D62300F54EE8 /* lrcScrollView.m */,
+				297C32761C82E88900F54EE8 /* lrcTableViewCell.h */,
+				297C32771C82E88A00F54EE8 /* lrcTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -638,7 +653,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				299AF9501C828FAD0059715C /* YLMusic.m in Sources */,
+				297C327B1C82EA6B00F54EE8 /* lrcLine.m in Sources */,
 				292EF3F51C81F99E0030140A /* YLPlayingViewController.m in Sources */,
+				297C327E1C82F98500F54EE8 /* lrcTool.m in Sources */,
 				2988C94A1C82ABC30042A4D6 /* NSString+YLExtension.m in Sources */,
 				292EF39B1C81F8D40030140A /* AppDelegate.m in Sources */,
 				297C32751C82D62300F54EE8 /* lrcScrollView.m in Sources */,
@@ -646,6 +663,7 @@
 				299AF9491C82811B0059715C /* UIView+YLExtension.m in Sources */,
 				292EF39C1C81F8D40030140A /* main.m in Sources */,
 				299AF9531C8295B60059715C /* YLAudioTool.m in Sources */,
+				297C32781C82E88A00F54EE8 /* lrcTableViewCell.m in Sources */,
 				292EF36A1C81F46B0030140A /* QQ__.xcdatamodeld in Sources */,
 				299AF94D1C828F980059715C /* YLPlayingTool.m in Sources */,
 			);

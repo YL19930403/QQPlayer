@@ -11,6 +11,7 @@
 #import "UIView+YLExtension.h"
 #import "NSString+YLExtension.h"
 #import "CALayer+LayerAnimation.h"
+#import "lrcScrollView.h"
 
 @interface YLPlayingViewController ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *albumView;
@@ -24,7 +25,7 @@
 @property(nonatomic,strong)NSTimer * timer ;
 @property(nonatomic,weak) AVAudioPlayer * player ;
 
-@property (weak, nonatomic) IBOutlet UIScrollView *lrcScrollView;
+@property (weak, nonatomic) IBOutlet lrcScrollView *lrcScrollView;
 @property (weak, nonatomic) IBOutlet UILabel *lrcLabel;
 
 @end
@@ -69,15 +70,21 @@
     
 }
 
-- (void)viewWillLayoutSubviews
+- (void)viewDidLayoutSubviews
 {
-    [super viewWillLayoutSubviews];
+    [super viewDidLayoutSubviews];
     //设置歌手图片的圆角
     self.iconView.layer.cornerRadius = self.iconView.width*0.5 ;
     self.iconView.layer.masksToBounds = YES ;
     self.iconView.layer.borderWidth = 8 ;
     self.iconView.layer.borderColor =  YLRGB(40, 40, 40).CGColor;
     self.lrcScrollView.contentSize = CGSizeMake(self.view.width*2, 0);
+}
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    
 }
 
 
@@ -101,6 +108,12 @@
     
     //4. 添加iconView的旋转动画
     [self addRotationAnimation];
+    
+    //5.添加定时器
+    [self startProgressTimer];
+    
+    //6. 公司lrcScrollView当前播放的歌曲的名称
+    self.lrcScrollView.lrcName = music.lrcname ;
 
     
 }
