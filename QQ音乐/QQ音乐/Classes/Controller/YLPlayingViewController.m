@@ -23,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalTimeLabel;
 
 @property(nonatomic,strong)NSTimer * timer ;
+//歌词的定时器
+@property(nonatomic,strong)CADisplayLink * lrcTimer ;
 @property(nonatomic,weak) AVAudioPlayer * player ;
 
 @property (weak, nonatomic) IBOutlet lrcScrollView *lrcScrollView;
@@ -44,6 +46,7 @@
     [self startPlayingMusic];
     
     //4. 添加定时器
+    [self stopProgressTimer];
     [self startProgressTimer];
     
     //5.给滑块添加手势
@@ -110,11 +113,15 @@
     [self addRotationAnimation];
     
     //5.添加定时器
+    [self stopProgressTimer];
     [self startProgressTimer];
     
-    //6. 公司lrcScrollView当前播放的歌曲的名称
+    //6. 告诉lrcScrollView当前播放的歌曲的名称
     self.lrcScrollView.lrcName = music.lrcname ;
 
+    //7. 添加歌词的定时器
+    [self stopLrcTimer];
+    [self startLrcTimer];
     
 }
 
@@ -151,12 +158,33 @@
     
 }
 
+
 - (void) updateProgress
 {
     //改变滑块的位置
   self.SlideView.value = self.player.currentTime / self.player.duration ;
     //设置当前播放时间的label
     self.startTimeLabel.text = [NSString timeWithNSInteger:self.player.currentTime];
+}
+
+
+#pragma mark  -  歌词的定时器
+- (void) startLrcTimer
+{
+    self.lrcTimer = [CADisplayLink  displayLinkWithTarget:self selector:@selector(updateLrcInfo)];
+    [self.lrcTimer addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+}
+
+- (void) stopLrcTimer
+{
+     //移除定时器
+    [self.lrcTimer invalidate];
+    self.lrcTimer = nil ;
+}
+
+- (void) updateLrcInfo
+{
+    self.lrcScrollView.currentTime = self.player.currentTime ;
 }
 
 #pragma mark  - 对滑块的处理
@@ -187,6 +215,7 @@
     //2.改变歌曲播放的时间
     self.player.currentTime = currentTime ;
     //3.添加定时器
+    [self stopProgressTimer];
     [self startProgressTimer];
 }
 

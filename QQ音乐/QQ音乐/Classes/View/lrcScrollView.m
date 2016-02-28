@@ -18,6 +18,9 @@
 
 @property(nonatomic,strong)NSMutableArray * lrclines ;
 
+//当前歌词对应的下标
+@property(nonatomic,assign)NSInteger currentLrcIndex ;
+
 @end
 
 @implementation lrcScrollView
@@ -87,6 +90,13 @@
 {
        //创建cell
     lrcTableViewCell * cell =   [lrcTableViewCell irlCellWithTableView:self.tableV];
+    //如果播放的是当前这句，则把字体放大
+    if (self.currentLrcIndex == indexPath.row) {
+        cell.textLabel.font = [UIFont systemFontOfSize:17];
+    }else{
+        [cell.textLabel setFont:[UIFont systemFontOfSize:13]];
+    }
+    
     //给cell设置数据
     lrcLine * lrcline = self.lrclines[indexPath.row];
     cell.textLabel.text = lrcline.text;
@@ -102,7 +112,40 @@
     //刷新列表
     [self.tableV reloadData];
     
+}
+
+- (void)setCurrentTime:(NSTimeInterval)currentTime
+{
+    _currentTime = currentTime ;
     
+    //找出需要显示的歌词
+    NSInteger count = self.lrclines.count;
+    for (int i =0; i<count; i++) {
+        //拿到i位置的歌词
+        lrcLine * lrc = self.lrclines[i];
+        //拿出i+1位置的歌词
+        NSInteger  nextLrcIndex = i+1 ;
+        if (nextLrcIndex >= count) {
+            return ;
+        }
+        
+        lrcLine * nextLrcLine = self.lrclines[nextLrcIndex];
+        //当前时间大于i位置的时间，并且小于i+1位置的时间
+        if (currentTime >= lrc.time && currentTime < nextLrcLine.time && self.currentLrcIndex != i) {
+            //计算i位置的indexPath
+            NSIndexPath * indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+            NSIndexPath * preIndexPath = [NSIndexPath indexPathForRow:self.currentLrcIndex inSection:0];
+            //记录i位置的下标
+            self.currentLrcIndex = i ;
+            //刷新i位置的cell
+            [self.tableV reloadRowsAtIndexPaths:@[indexPath,preIndexPath] withRowAnimation:UITableViewRowAnimationRight];
+            
+            //让TableView的i位置的cell，滚动到中间
+            [self.tableV scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        }
+        
+    }
+
 }
 
 

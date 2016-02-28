@@ -12,5 +12,9 @@
 //歌词的名字
 @property(nonatomic,copy) NSString * lrcName ;
 
+//当前歌词对应的时间
+@property(nonatomic, assign)NSTimeInterval currentTime ;
+
+
 - (instancetype)initWithCoder:(NSCoder *)aDecoder ;
 @end
