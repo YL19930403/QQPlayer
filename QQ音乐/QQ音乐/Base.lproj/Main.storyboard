@@ -25,13 +25,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="月半小夜曲" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6rd-AL-xGU" userLabel="歌曲的Label">
-                                        <rect key="frame" x="258" y="30" width="85" height="21"/>
+                                        <rect key="frame" x="258" y="30" width="85" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="李克勤" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5n6-bJ-nUt" userLabel="歌手的Label">
-                                        <rect key="frame" x="279" y="61" width="42" height="17"/>
+                                        <rect key="frame" x="279" y="60" width="42" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -170,6 +170,12 @@
                                     <constraint firstAttribute="width" secondItem="nWh-az-mZY" secondAttribute="height" multiplier="1:1" id="Snx-9T-SuQ"/>
                                 </constraints>
                             </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bkv-ss-uPq" customClass="lrcScrollView">
+                                <rect key="frame" x="0.0" y="100" width="600" height="350"/>
+                                <connections>
+                                    <outlet property="delegate" destination="YCt-xd-4cX" id="kWl-aX-Cgo"/>
+                                </connections>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -179,14 +185,18 @@
                             <constraint firstItem="GVv-Hd-FRH" firstAttribute="top" secondItem="nWh-az-mZY" secondAttribute="bottom" constant="30" id="9T6-V9-xr4"/>
                             <constraint firstItem="M6v-la-vK4" firstAttribute="top" secondItem="y8w-N3-JhB" secondAttribute="top" id="CRk-rZ-5hu"/>
                             <constraint firstItem="IZh-Jr-O2R" firstAttribute="top" secondItem="y8w-N3-JhB" secondAttribute="top" id="LEx-5q-Bmg"/>
+                            <constraint firstItem="Bkv-ss-uPq" firstAttribute="leading" secondItem="y8w-N3-JhB" secondAttribute="leading" id="NvH-Lh-Q6Y"/>
                             <constraint firstItem="oYC-fr-zyK" firstAttribute="leading" secondItem="y8w-N3-JhB" secondAttribute="leading" id="OrW-oK-c0X"/>
                             <constraint firstAttribute="centerX" secondItem="nWh-az-mZY" secondAttribute="centerX" id="RGf-aa-E8t"/>
+                            <constraint firstAttribute="trailing" secondItem="Bkv-ss-uPq" secondAttribute="trailing" id="RPz-Mu-vSK"/>
                             <constraint firstAttribute="centerX" secondItem="GVv-Hd-FRH" secondAttribute="centerX" id="U8u-gm-v5r"/>
                             <constraint firstItem="nWh-az-mZY" firstAttribute="top" secondItem="M6v-la-vK4" secondAttribute="bottom" constant="30" id="XfJ-WK-wjs"/>
                             <constraint firstItem="4HU-DY-vZe" firstAttribute="top" secondItem="oYC-fr-zyK" secondAttribute="bottom" id="boK-OP-ZVH"/>
                             <constraint firstItem="oYC-fr-zyK" firstAttribute="top" secondItem="GVv-Hd-FRH" secondAttribute="bottom" constant="30" id="hkw-fX-uQ1"/>
                             <constraint firstItem="M6v-la-vK4" firstAttribute="leading" secondItem="y8w-N3-JhB" secondAttribute="leading" id="mJh-BU-kDz"/>
+                            <constraint firstItem="oYC-fr-zyK" firstAttribute="top" secondItem="Bkv-ss-uPq" secondAttribute="bottom" id="n2w-7T-aM4"/>
                             <constraint firstAttribute="trailing" secondItem="oYC-fr-zyK" secondAttribute="trailing" id="ofY-xu-yJp"/>
+                            <constraint firstItem="Bkv-ss-uPq" firstAttribute="top" secondItem="M6v-la-vK4" secondAttribute="bottom" id="qvF-jx-WHl"/>
                             <constraint firstItem="4HU-DY-vZe" firstAttribute="top" secondItem="IZh-Jr-O2R" secondAttribute="bottom" id="v2M-eJ-4zn"/>
                         </constraints>
                     </view>
@@ -194,6 +204,8 @@
                         <outlet property="SlideView" destination="O5E-3M-mPe" id="z6J-Fw-fvC"/>
                         <outlet property="albumView" destination="IZh-Jr-O2R" id="xSL-pb-Gya"/>
                         <outlet property="iconView" destination="nWh-az-mZY" id="58M-bR-U3b"/>
+                        <outlet property="lrcLabel" destination="GVv-Hd-FRH" id="XJL-t4-Bcv"/>
+                        <outlet property="lrcScrollView" destination="Bkv-ss-uPq" id="KSo-JC-og8"/>
                         <outlet property="singerLabel" destination="5n6-bJ-nUt" id="ms6-xA-0OJ"/>
                         <outlet property="songLabel" destination="6rd-AL-xGU" id="zkS-Ea-pHE"/>
                         <outlet property="startTimeLabel" destination="jvO-j1-gUa" id="v12-QE-fWj"/>

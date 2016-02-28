@@ -12,7 +12,7 @@
 #import "NSString+YLExtension.h"
 #import "CALayer+LayerAnimation.h"
 
-@interface YLPlayingViewController ()
+@interface YLPlayingViewController ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *albumView;
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
 @property (weak, nonatomic) IBOutlet UISlider *SlideView;
@@ -23,6 +23,9 @@
 
 @property(nonatomic,strong)NSTimer * timer ;
 @property(nonatomic,weak) AVAudioPlayer * player ;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *lrcScrollView;
+@property (weak, nonatomic) IBOutlet UILabel *lrcLabel;
 
 @end
 
@@ -74,6 +77,7 @@
     self.iconView.layer.masksToBounds = YES ;
     self.iconView.layer.borderWidth = 8 ;
     self.iconView.layer.borderColor =  YLRGB(40, 40, 40).CGColor;
+    self.lrcScrollView.contentSize = CGSizeMake(self.view.width*2, 0);
 }
 
 
@@ -241,7 +245,14 @@
     sender.selected  =  !sender.selected ;
 }
 
-
+#pragma mark  - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat offSetRation =  scrollView.contentOffset.x / self.view.width ;
+    self.lrcLabel.alpha = 1 - offSetRation ;
+    self.iconView.alpha = 1 - offSetRation ;
+    
+}
 
 @end
 
