@@ -83,6 +83,9 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="selected" image="player_btn_pause_normal"/>
+                                        <connections>
+                                            <action selector="PlayOrPause:" destination="YCt-xd-4cX" eventType="touchUpInside" id="FeW-mD-JSG"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZUD-6a-rKR" userLabel="下一首按钮">
                                         <rect key="frame" x="362" y="56" width="64" height="64"/>
@@ -91,6 +94,9 @@
                                         </state>
                                         <state key="selected" image="player_btn_next_normal"/>
                                         <state key="highlighted" image="player_btn_next_highlight"/>
+                                        <connections>
+                                            <action selector="NextMusic:" destination="YCt-xd-4cX" eventType="touchUpInside" id="NXP-vs-ltZ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYp-97-FcN" userLabel="上一首按钮">
                                         <rect key="frame" x="174" y="56" width="64" height="64"/>
@@ -99,10 +105,18 @@
                                         </state>
                                         <state key="selected" image="player_btn_pause_normal"/>
                                         <state key="highlighted" image="player_btn_pre_highlight"/>
+                                        <connections>
+                                            <action selector="PreviousMusic:" destination="YCt-xd-4cX" eventType="touchUpInside" id="FRU-gV-ibl"/>
+                                        </connections>
                                     </button>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="O5E-3M-mPe" userLabel="进度条">
                                         <rect key="frame" x="48" y="6" width="504" height="31"/>
                                         <color key="minimumTrackTintColor" red="0.14901960780000001" green="0.73333333329999995" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="TouchDown:" destination="YCt-xd-4cX" eventType="touchDown" id="H8u-o4-PSW"/>
+                                            <action selector="TouchUp:" destination="YCt-xd-4cX" eventType="valueChanged" id="Pqk-eH-s3u"/>
+                                            <action selector="ValueChange:" destination="YCt-xd-4cX" eventType="valueChanged" id="aya-xx-MSB"/>
+                                        </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02:30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvO-j1-gUa" userLabel="当前播放的时间">
                                         <rect key="frame" x="0.0" y="14" width="50" height="16"/>

@@ -57,6 +57,7 @@
 		292EF3F11C81F8F50030140A /* 339744.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 292EF3C81C81F8F50030140A /* 339744.mp3 */; };
 		292EF3F21C81F8F50030140A /* Musics.plist in Resources */ = {isa = PBXBuildFile; fileRef = 292EF3C91C81F8F50030140A /* Musics.plist */; };
 		292EF3F51C81F99E0030140A /* YLPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 292EF3F41C81F99E0030140A /* YLPlayingViewController.m */; };
+		297C32721C82CFDE00F54EE8 /* CALayer+LayerAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 297C32711C82CFDE00F54EE8 /* CALayer+LayerAnimation.m */; };
 		2988C94A1C82ABC30042A4D6 /* NSString+YLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2988C9491C82ABC30042A4D6 /* NSString+YLExtension.m */; };
 		299AF9491C82811B0059715C /* UIView+YLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 299AF9481C82811B0059715C /* UIView+YLExtension.m */; };
 		299AF94D1C828F980059715C /* YLPlayingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 299AF94C1C828F980059715C /* YLPlayingTool.m */; };
@@ -141,6 +142,8 @@
 		292EF3C91C81F8F50030140A /* Musics.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Musics.plist; sourceTree = "<group>"; };
 		292EF3F31C81F99E0030140A /* YLPlayingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLPlayingViewController.h; sourceTree = "<group>"; };
 		292EF3F41C81F99E0030140A /* YLPlayingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLPlayingViewController.m; sourceTree = "<group>"; };
+		297C32701C82CFDE00F54EE8 /* CALayer+LayerAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+LayerAnimation.h"; sourceTree = "<group>"; };
+		297C32711C82CFDE00F54EE8 /* CALayer+LayerAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+LayerAnimation.m"; sourceTree = "<group>"; };
 		2988C9481C82ABC30042A4D6 /* NSString+YLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+YLExtension.h"; sourceTree = "<group>"; };
 		2988C9491C82ABC30042A4D6 /* NSString+YLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+YLExtension.m"; sourceTree = "<group>"; };
 		299AF9471C82811B0059715C /* UIView+YLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+YLExtension.h"; path = "Other/UIView+YLExtension.h"; sourceTree = "<group>"; };
@@ -393,6 +396,8 @@
 				299AF9481C82811B0059715C /* UIView+YLExtension.m */,
 				2988C9481C82ABC30042A4D6 /* NSString+YLExtension.h */,
 				2988C9491C82ABC30042A4D6 /* NSString+YLExtension.m */,
+				297C32701C82CFDE00F54EE8 /* CALayer+LayerAnimation.h */,
+				297C32711C82CFDE00F54EE8 /* CALayer+LayerAnimation.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -631,6 +636,7 @@
 				292EF3F51C81F99E0030140A /* YLPlayingViewController.m in Sources */,
 				2988C94A1C82ABC30042A4D6 /* NSString+YLExtension.m in Sources */,
 				292EF39B1C81F8D40030140A /* AppDelegate.m in Sources */,
+				297C32721C82CFDE00F54EE8 /* CALayer+LayerAnimation.m in Sources */,
 				299AF9491C82811B0059715C /* UIView+YLExtension.m in Sources */,
 				292EF39C1C81F8D40030140A /* main.m in Sources */,
 				299AF9531C8295B60059715C /* YLAudioTool.m in Sources */,

@@ -15,6 +15,10 @@
 
 + (YLMusic *)playingMusic ;
 
++ (YLMusic *)PreviousMusic ;
+
++ (YLMusic *)NextMusic ;
+
 + (void) setPlayingMusic:(YLMusic *)playingMusic ;
 
 @end
