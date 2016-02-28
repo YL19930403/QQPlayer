@@ -182,6 +182,8 @@
                         <outlet property="iconView" destination="nWh-az-mZY" id="58M-bR-U3b"/>
                         <outlet property="singerLabel" destination="5n6-bJ-nUt" id="ms6-xA-0OJ"/>
                         <outlet property="songLabel" destination="6rd-AL-xGU" id="zkS-Ea-pHE"/>
+                        <outlet property="startTimeLabel" destination="jvO-j1-gUa" id="v12-QE-fWj"/>
+                        <outlet property="totalTimeLabel" destination="fRa-Kg-0ot" id="vBv-bF-eOR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t0Z-Nv-qIh" sceneMemberID="firstResponder"/>

@@ -15,7 +15,7 @@
 @interface YLAudioTool : NSObject
 
 + (void) playSoundWithSoundName:(NSString *)soundName ;
-+ (instancetype) playMusicWithMusicName:(NSString *)musicName ;
++ (id) playMusicWithMusicName:(NSString *)musicName ;
 + (void) pauseMusicWithMusicName:(NSString *)musicName ;
 + (void) stopMusicWithMusicName:(NSString *)musicName ;
 

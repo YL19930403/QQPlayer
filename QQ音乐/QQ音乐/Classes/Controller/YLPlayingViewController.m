@@ -9,6 +9,7 @@
 #import "YLPlayingViewController.h"
 #import <Masonry.h>
 #import "UIView+YLExtension.h"
+#import "NSString+YLExtension.h"
 
 @interface YLPlayingViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *albumView;
@@ -16,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UISlider *SlideView;
 @property (weak, nonatomic) IBOutlet UILabel *songLabel;
 @property (weak, nonatomic) IBOutlet UILabel *singerLabel;
+@property (weak, nonatomic) IBOutlet UILabel *startTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalTimeLabel;
 
 @end
 
@@ -74,9 +77,34 @@
     self.singerLabel.text = music.singer ;
     
     //3.开始播放
-    [YLAudioTool playMusicWithMusicName:music.filename ];
+    AVAudioPlayer * player = [YLAudioTool playMusicWithMusicName:music.filename ];
+    //通过播放器对象，拿到"播放歌曲的当前时间"  和“播放歌曲de 总时间”
+    self.startTimeLabel.text = [NSString timeWithNSInteger:player.currentTime] ;
+    self.totalTimeLabel.text = [NSString timeWithNSInteger:player.duration] ;
+    
+    //4. 添加iconView的旋转动画
+    [self addRotationAnimation];
+
     
 }
+
+//添加旋转动画
+- (void) addRotationAnimation
+{
+    /**
+     基本动画和核心动画的区别：
+         基本动画只能设置两三个值，fromValue, toValue,
+         核心动画可以设置很多值
+     使用KVC注意：   位移动画（transform.translation.x）,旋转动画（围绕z轴旋转 transform.rotation.z ）
+    */
+    CABasicAnimation * basicAnim = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    basicAnim.fromValue = @(0) ;
+    basicAnim.toValue = @(-M_PI * 2) ;
+    basicAnim.duration = 5.0 ;
+    basicAnim.repeatCount = MAXFLOAT ;
+    [self.iconView.layer addAnimation:basicAnim forKey:nil];  //以后可以通过这个Key取出动画,我们传nil就好了
+}
+
 @end
 
 
