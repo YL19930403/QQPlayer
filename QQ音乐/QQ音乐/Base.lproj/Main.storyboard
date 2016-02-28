@@ -176,6 +176,13 @@
                             <constraint firstItem="4HU-DY-vZe" firstAttribute="top" secondItem="IZh-Jr-O2R" secondAttribute="bottom" id="v2M-eJ-4zn"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="SlideView" destination="O5E-3M-mPe" id="z6J-Fw-fvC"/>
+                        <outlet property="albumView" destination="IZh-Jr-O2R" id="xSL-pb-Gya"/>
+                        <outlet property="iconView" destination="nWh-az-mZY" id="58M-bR-U3b"/>
+                        <outlet property="singerLabel" destination="5n6-bJ-nUt" id="ms6-xA-0OJ"/>
+                        <outlet property="songLabel" destination="6rd-AL-xGU" id="zkS-Ea-pHE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t0Z-Nv-qIh" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="fZn-hF-3gT"/>
