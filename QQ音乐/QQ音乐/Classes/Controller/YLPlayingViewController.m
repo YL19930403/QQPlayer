@@ -20,6 +20,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *startTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalTimeLabel;
 
+@property(nonatomic,strong)NSTimer * timer ;
+@property(nonatomic,weak) AVAudioPlayer * player ;
+
 @end
 
 @implementation YLPlayingViewController
@@ -34,6 +37,10 @@
     
     //3. 开始播放歌曲
     [self startPlayingMusic];
+    
+    //4. 添加定时器
+    [self startProgressTimer];
+    
     
 }
 
@@ -78,6 +85,7 @@
     
     //3.开始播放
     AVAudioPlayer * player = [YLAudioTool playMusicWithMusicName:music.filename ];
+    self.player = player ;
     //通过播放器对象，拿到"播放歌曲的当前时间"  和“播放歌曲de 总时间”
     self.startTimeLabel.text = [NSString timeWithNSInteger:player.currentTime] ;
     self.totalTimeLabel.text = [NSString timeWithNSInteger:player.duration] ;
@@ -100,9 +108,33 @@
     CABasicAnimation * basicAnim = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
     basicAnim.fromValue = @(0) ;
     basicAnim.toValue = @(-M_PI * 2) ;
-    basicAnim.duration = 5.0 ;
+    basicAnim.duration = 10.0 ;
     basicAnim.repeatCount = MAXFLOAT ;
     [self.iconView.layer addAnimation:basicAnim forKey:nil];  //以后可以通过这个Key取出动画,我们传nil就好了
+}
+
+#pragma mark  -  定时器
+- (void) startProgressTimer
+{
+    //手动调用滑块到最左段位置
+    [self updateProgress];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateProgress) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+}
+
+- (void) stopProgressTimer
+{
+    [self.timer invalidate];
+    self.timer = nil ;
+    
+}
+
+- (void) updateProgress
+{
+    //改变滑块的位置
+  self.SlideView.value = self.player.currentTime / self.player.duration ;
+    //设置当前播放时间的label
+    self.startTimeLabel.text = [NSString timeWithNSInteger:self.player.currentTime];
 }
 
 @end

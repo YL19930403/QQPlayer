@@ -100,7 +100,7 @@
                                         <state key="selected" image="player_btn_pause_normal"/>
                                         <state key="highlighted" image="player_btn_pre_highlight"/>
                                     </button>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="O5E-3M-mPe" userLabel="进度条">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="O5E-3M-mPe" userLabel="进度条">
                                         <rect key="frame" x="48" y="6" width="504" height="31"/>
                                         <color key="minimumTrackTintColor" red="0.14901960780000001" green="0.73333333329999995" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                     </slider>
