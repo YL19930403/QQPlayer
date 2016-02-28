@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface lrcScrollView : UIScrollView
-
+- (instancetype)initWithCoder:(NSCoder *)aDecoder ;
 @end
