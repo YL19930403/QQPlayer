@@ -201,6 +201,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="NextMusicBtn" destination="ZUD-6a-rKR" id="WYT-57-s4g"/>
+                        <outlet property="PlayOrPauseBtn" destination="JIr-nL-R42" id="d8t-NH-nHP"/>
+                        <outlet property="PreMusicBtn" destination="zYp-97-FcN" id="Dil-NQ-Wzc"/>
                         <outlet property="SlideView" destination="O5E-3M-mPe" id="z6J-Fw-fvC"/>
                         <outlet property="albumView" destination="IZh-Jr-O2R" id="xSL-pb-Gya"/>
                         <outlet property="iconView" destination="nWh-az-mZY" id="58M-bR-U3b"/>

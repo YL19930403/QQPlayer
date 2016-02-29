@@ -22,6 +22,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *startTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalTimeLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *PlayOrPauseBtn;
+
+@property (weak, nonatomic) IBOutlet UIButton *PreMusicBtn;
+@property (weak, nonatomic) IBOutlet UIButton *NextMusicBtn;
+
 @property(nonatomic,strong)NSTimer * timer ;
 //歌词的定时器
 @property(nonatomic,strong)CADisplayLink * lrcTimer ;
@@ -181,8 +186,27 @@
     //2.3 让应用程序接收远程控制事件
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     
-    
 }
+
+//实现远程控制事件
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event
+{
+    switch (event.subtype) {
+        case UIEventSubtypeRemoteControlPlay:
+        case UIEventSubtypeRemoteControlPause:
+            [self PlayOrPause:self.PlayOrPauseBtn];
+            break;
+        case UIEventSubtypeRemoteControlNextTrack:
+            [self NextMusic:self.NextMusicBtn];
+            break ;
+        case UIEventSubtypeRemoteControlPreviousTrack:
+            [self PreviousMusic:self.PreMusicBtn];
+            break;
+        default:
+            break;
+    }
+}
+
 
 #pragma mark  -  定时器
 - (void) startProgressTimer
