@@ -93,8 +93,10 @@
     //如果播放的是当前这句，则把字体放大
     if (self.currentLrcIndex == indexPath.row) {
         cell.textLabel.font = [UIFont systemFontOfSize:17];
+        [cell.textLabel setTextColor:[UIColor greenColor]] ;
     }else{
         [cell.textLabel setFont:[UIFont systemFontOfSize:13]];
+        [cell.textLabel setTextColor:[UIColor whiteColor]];
     }
     
     //给cell设置数据
@@ -111,6 +113,9 @@
     self.lrclines = [lrcTool lrcToolWithLrcName:lrcName];
     //刷新列表
     [self.tableV reloadData];
+    
+    //让TableView滚动到最上面
+    [self.tableV setContentOffset:CGPointMake(0, -self.tableV.height *0.5) animated:YES];
     
 }
 
@@ -134,11 +139,19 @@
         if (currentTime >= lrc.time && currentTime < nextLrcLine.time && self.currentLrcIndex != i) {
             //计算i位置的indexPath
             NSIndexPath * indexPath = [NSIndexPath indexPathForRow:i inSection:0];
-            NSIndexPath * preIndexPath = [NSIndexPath indexPathForRow:self.currentLrcIndex inSection:0];
+            
+         
+            NSArray * indexPaths = nil;
+            if (self.currentLrcIndex >= count) {
+                indexPaths = @[indexPath];
+            }else{
+               NSIndexPath * preIndexPath = [NSIndexPath indexPathForRow:self.currentLrcIndex inSection:0];
+                indexPaths = @[indexPath,preIndexPath];
+            }
             //记录i位置的下标
             self.currentLrcIndex = i ;
             //刷新i位置的cell
-            [self.tableV reloadRowsAtIndexPaths:@[indexPath,preIndexPath] withRowAnimation:UITableViewRowAnimationRight];
+            [self.tableV reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationRight];
             
             //让TableView的i位置的cell，滚动到中间
             [self.tableV scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];

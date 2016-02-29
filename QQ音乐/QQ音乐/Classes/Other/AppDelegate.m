@@ -16,7 +16,15 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    //1.获取音频会话
+    AVAudioSession * session = [AVAudioSession sharedInstance];
+    //2.设置音频会话的类型
+    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+    //3.激活音频会话（静音状态也能播放）
+    [session setActive:YES error:nil];
+    
+    
     return YES;
 }
 

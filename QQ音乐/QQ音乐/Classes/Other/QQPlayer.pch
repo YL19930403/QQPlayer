@@ -27,6 +27,7 @@
 #import "YLMusic.h"
 #import "YLPlayingTool.h"
 #import "YLAudioTool.h"
+#import "UIView+YLExtension.h"
 #import <AVFoundation/AVFoundation.h>
 
 

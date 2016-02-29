@@ -8,7 +8,6 @@
 
 #import "YLPlayingViewController.h"
 #import <Masonry.h>
-#import "UIView+YLExtension.h"
 #import "NSString+YLExtension.h"
 #import "CALayer+LayerAnimation.h"
 #import "lrcScrollView.h"
