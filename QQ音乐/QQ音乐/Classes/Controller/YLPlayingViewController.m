@@ -7,10 +7,11 @@
 //
 
 #import "YLPlayingViewController.h"
-#import <Masonry.h>
 #import "NSString+YLExtension.h"
 #import "CALayer+LayerAnimation.h"
 #import "lrcScrollView.h"
+#import <MediaPlayer/MediaPlayer.h>
+
 
 @interface YLPlayingViewController ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *albumView;
@@ -67,6 +68,7 @@
         make.edges.equalTo(self.albumView);
     }];
     
+    
     //3.播放歌曲
     [self startPlayingMusic];
     
@@ -122,6 +124,9 @@
     [self stopLrcTimer];
     [self startLrcTimer];
     
+    //8.设置锁屏界面应该显示的信息
+    [self setUpLockScreenInfo];
+    
 }
 
 //添加旋转动画
@@ -139,6 +144,44 @@
     basicAnim.duration = 3.0 ;
     basicAnim.repeatCount = MAXFLOAT ;
     [self.iconView.layer addAnimation:basicAnim forKey:nil];  //以后可以通过这个Key取出动画,我们传nil就好了
+}
+
+#pragma mark  -  设置锁屏界面应该显示的信息
+- (void) setUpLockScreenInfo
+{
+    
+    /*
+     MPMediaItemPropertyMediaType;
+     MPMediaItemPropertyTitle;
+     MPMediaItemPropertyAlbumTitle;
+     MPMediaItemPropertyAlbumPersistentID
+     MPMediaItemPropertyArtistPersistentID
+     MPMediaItemPropertyArtist;
+     */
+   //1.拿到当前播放的歌曲
+    YLMusic * playingMusic = [YLPlayingTool playingMusic];
+    //2.设置锁屏界面的内容
+         //2.1 获取锁屏界面中心
+    MPNowPlayingInfoCenter * infoCenter = [MPNowPlayingInfoCenter defaultCenter];
+    
+         //2.2 设置显示的信息
+    NSMutableDictionary * mutDict = [NSMutableDictionary dictionary];
+          //2.2.1设置歌曲名称
+    [mutDict setValue:playingMusic.name forKey:MPMediaItemPropertyAlbumTitle];
+          //2.2.2 设置歌手名称
+    [mutDict setValue:playingMusic.singer forKey:MPMediaItemPropertyArtist];
+           //2.2.3 设置专辑封面
+    UIImage * img = [UIImage imageNamed:playingMusic.icon];
+    MPMediaItemArtwork * work = [[MPMediaItemArtwork alloc] initWithImage:img];
+    [mutDict setValue:work forKey:MPMediaItemPropertyArtwork];
+         //2.2.4 设置歌曲总时长
+    [mutDict setValue:@(self.player.duration) forKey:MPMediaItemPropertyPlaybackDuration];
+    infoCenter.nowPlayingInfo = mutDict;
+    
+    //2.3 让应用程序接收远程控制事件
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    
+    
 }
 
 #pragma mark  -  定时器
